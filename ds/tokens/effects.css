@@ -1,0 +1,35 @@
+/* Pixel Experts Team — Radius, borders, shadows, motion.
+   Pixel brand leans crisp/technical: modest radii, hard 1px borders,
+   ember/plasma glow accents rather than soft ambient shadow. */
+:root {
+  /* Radius — small & squared, echoing the pixel motif */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  --border-width: 1px;
+  --border-width-strong: 2px;
+
+  /* Shadows — dark-first, low ambient */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+
+  /* Signature neon glows */
+  --glow-ember: 0 0 0 1px rgba(255,68,25,0.4), 0 0 20px rgba(255,68,25,0.35);
+  --glow-plasma: 0 0 0 1px rgba(255,149,0,0.4), 0 0 20px rgba(255,149,0,0.35);
+
+  /* Gradients */
+  --gradient-flame: linear-gradient(135deg, var(--pixel-ember) 0%, var(--pixel-plasma) 100%);
+  --gradient-plasma-mist: linear-gradient(160deg, var(--pixel-plasma) 0%, var(--pixel-mist-blue) 100%);
+
+  /* Motion — snappy, technical; minimal bounce */
+  --ease-standard: cubic-bezier(0.2, 0, 0.1, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast: 120ms; /* @kind other */
+  --dur-base: 200ms; /* @kind other */
+  --dur-slow: 320ms; /* @kind other */
+}

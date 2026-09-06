@@ -1,0 +1,79 @@
+<!-- @dsCard group="Just a Website" viewport="1280x900" name="Just a Website — Case Study" subtitle="Portfolio case study: Dr Mahdi Siala site breakdown" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://justwebsight-psi.vercel.app/case-study">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Case study — a website that earns trust before the booking button | Just a Website</title>
+<meta name="description" content="How we designed and built the website of a hand-and-shoulder surgeon in Nice, block by block: what we decided, why, and how it converts a patient into a booking.">
+<link rel="stylesheet" href="ds/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#fff;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#0A0A0A;overflow-x:hidden}
+  img{max-width:100%}
+  .jaw-carousel{scrollbar-width:none;-ms-overflow-style:none}
+  .jaw-carousel::-webkit-scrollbar{display:none}
+  a{color:#2F6BFF}a:hover{color:#1D4ED8}
+  @keyframes jawFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes jawFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes jawFlow{0%{background-position:0% 0}100%{background-position:200% 0}}
+  @keyframes jawPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(47,107,255,.4)}50%{transform:scale(1.04);box-shadow:0 0 0 8px rgba(47,107,255,0)}}
+  @keyframes jawPop{0%{transform:scale(.5);opacity:0}100%{transform:scale(1);opacity:1}}
+  @keyframes jawSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  @keyframes jawDraw{to{stroke-dashoffset:0}}
+  .jaw-range{-webkit-appearance:none;height:6px;border-radius:999px;background:#E7E9EC}
+  .jaw-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:999px;background:#2F6BFF;cursor:pointer;box-shadow:0 2px 6px rgba(47,107,255,.5);border:3px solid #fff}
+  #root{min-height:100vh}
+</style></head>
+<body><div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script type="text/babel" src="JustTheme.jsx"></script>
+<script type="text/babel" src="JustI18n.jsx"></script>
+<script type="text/babel" src="JustContact.jsx"></script>
+<script type="text/babel" src="JustCaseStudy.jsx"></script>
+<script type="text/babel" src="JustContactBubble.jsx"></script>
+<script type="text/babel" src="JustConsent.jsx"></script>
+<script type="text/babel">
+const T = window.JAW_T, JustButton = window.JustButton, LangSwitch = window.JawLangSwitch;
+
+function Nav({ onBuild }) {
+  const [, t] = window.jawUseLang();
+  const mob = window.jawUseMobile();
+  const [s, setS] = React.useState(false);
+  React.useEffect(() => { const f = () => setS(window.scrollY > 20); window.addEventListener('scroll', f); return () => window.removeEventListener('scroll', f); }, []);
+  return (
+    <header style={{ position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid ' + (s ? T.line : 'transparent'), background: s ? 'rgba(255,255,255,0.82)' : 'transparent', backdropFilter: s ? 'blur(12px)' : 'none', transition: 'all .3s' }}>
+      <div style={{ ...T.wrap, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+        <a href="index.html" style={{ display: 'flex', alignItems: 'center', gap: 9, minWidth: 0, textDecoration: 'none' }}>
+          <span style={{ width: 12, height: 12, background: T.gold, borderRadius: 2, flex: 'none' }} />
+          <span style={{ fontFamily: T.display, fontSize: 24, color: T.ink }}>PIXEL</span>
+          {!mob && <span style={{ fontFamily: T.body, fontSize: 13, color: T.muted }}>{t('nav.tag')}</span>}
+        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: mob ? 8 : 14, flex: 'none' }}>
+          <LangSwitch />
+          {!mob && <JustButton variant="dark" icon="arrow-right" onClick={onBuild}>{t('nav.build')}</JustButton>}
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function App() {
+  const bubbleRef = React.useRef(null);
+  const openBubble = () => { if (window.jawOpenBubble) window.jawOpenBubble(); };
+  React.useEffect(() => { const id = setInterval(() => window.lucide && window.lucide.createIcons(), 400); return () => clearInterval(id); }, []);
+  return (
+    <React.Fragment>
+      <Nav onBuild={openBubble} />
+      <window.JustCaseStudy onContact={openBubble} />
+      <window.JustFooter />
+      <window.JustContactBubble />
+      <window.JustConsent />
+    </React.Fragment>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script></body></html>

@@ -1,0 +1,35 @@
+/* Pixel Experts Team — Typography tokens */
+:root {
+  --font-display: 'Jersey 25', 'Archivo', system-ui, sans-serif; /* headings, pixel display */
+  --font-body: 'Archivo', system-ui, -apple-system, sans-serif;  /* body & UI */
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+
+  /* Type scale (px). Display uses Jersey 25; UI/body uses Archivo. */
+  --fs-display-xl: 96px;
+  --fs-display-lg: 72px;
+  --fs-display-md: 52px;
+  --fs-h1: 40px;
+  --fs-h2: 32px;
+  --fs-h3: 24px;
+  --fs-title: 20px;
+  --fs-body-lg: 18px;
+  --fs-body: 16px;
+  --fs-body-sm: 14px;
+  --fs-caption: 12px;
+
+  --lh-tight: 1.02; /* @kind font */   /* Jersey 25 display — nearly solid */
+  --lh-snug: 1.15; /* @kind font */
+  --lh-normal: 1.5; /* @kind font */
+  --lh-relaxed: 1.65; /* @kind font */
+
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+  --fw-black: 900; /* @kind font */
+
+  --ls-display: -0.01em; /* @kind font */
+  --ls-normal: 0; /* @kind font */
+  --ls-wide: 0.04em; /* @kind font */
+  --ls-caps: 0.12em; /* @kind font */   /* eyebrow / label uppercase tracking */
+}

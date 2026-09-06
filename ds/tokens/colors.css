@@ -1,0 +1,60 @@
+/* Pixel Experts Team — Color tokens
+   Source of truth: brand palette sheets (assets/palette-*.png, palette-swatches.jpg).
+   Hex labels on the source sheets contained OCR/typo artifacts; values below are
+   sampled from the actual swatch pixels and reconciled with the readable labels. */
+:root {
+  /* ---- Core / Primary ---- */
+  --pixel-black: #0A0A0A;        /* Cyber Black — minimalist base, technological void */
+  --pixel-ember: #FF4419;        /* Neon Ember — pulsing red-orange neon, primary accent */
+  --pixel-plasma: #FF9500;       /* Plasma Orange — glowing amber, secondary accent */
+
+  /* ---- Brand mark ---- */
+  --pixel-gold: #E8A31A;         /* the pixel square in the logo */
+
+  /* ---- Neutral / Backgrounds ---- */
+  --pixel-glass-gray: #C2C9CC;   /* Glass Gray */
+  --pixel-mist-blue: #4A9EA8;    /* Mist Blue — muted teal */
+  --pixel-soft-chrome: #DCE1E3;  /* Soft Chrome — near-white chrome */
+  --pixel-off-white: #F2F2F2;
+  --pixel-white: #FFFFFF;
+
+  /* ---- Support / Signals ---- */
+  --pixel-signal-red: #C41320;   /* Signal Red — errors, destructive */
+
+  /* ---- Extended neutral ramp (derived from Cyber Black) ---- */
+  --pixel-ink-900: #0A0A0A;
+  --pixel-ink-800: #16171A;
+  --pixel-ink-700: #24262B;
+  --pixel-ink-600: #3A3D45;
+  --pixel-ink-400: #797E88;
+  --pixel-ink-300: #A8AEB6;
+
+  /* ======================================================
+     SEMANTIC ALIASES — reference these in components
+     ====================================================== */
+  --bg-base: var(--pixel-black);          /* app canvas (dark-first brand) */
+  --bg-surface: var(--pixel-ink-800);     /* raised card on dark */
+  --bg-surface-2: var(--pixel-ink-700);   /* nested / hover surface */
+  --bg-light: var(--pixel-white);         /* light-mode canvas */
+  --bg-light-surface: var(--pixel-off-white);
+
+  --text-primary: var(--pixel-white);     /* on dark */
+  --text-secondary: var(--pixel-ink-300);
+  --text-muted: var(--pixel-ink-400);
+  --text-on-light: var(--pixel-black);    /* on light surfaces */
+  --text-on-accent: var(--pixel-black);   /* text sitting on ember/plasma */
+
+  --accent: var(--pixel-ember);
+  --accent-hover: #FF5A34;
+  --accent-press: #E63A12;
+  --accent-2: var(--pixel-plasma);
+  --accent-2-hover: #FFA727;
+
+  --border: var(--pixel-ink-600);
+  --border-strong: var(--pixel-ink-400);
+  --border-light: var(--pixel-soft-chrome);
+
+  --success: var(--pixel-mist-blue);
+  --danger: var(--pixel-signal-red);
+  --focus-ring: var(--pixel-ember);
+}
