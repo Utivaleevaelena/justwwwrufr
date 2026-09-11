@@ -35,7 +35,7 @@ function JustProcess() {
         <Eyebrow center>{t('process.eyebrow')}</Eyebrow>
         <h2 style={{ fontFamily: T.display, fontSize: 'clamp(28px, 7vw, 46px)', color: '#fff', textAlign: 'center', margin: '14px 0 0' }}>{t('process.title')}</h2>
         <div style={{ position: 'relative', marginTop: 56, display: 'grid', gridTemplateColumns: mob ? 'repeat(auto-fit, minmax(120px, 1fr))' : 'repeat(7,1fr)', gap: 12 }}>
-          {!mob && <div style={{ position: 'absolute', top: 26, left: '7%', right: '7%', height: 2, background: 'linear-gradient(90deg,#2F6BFF,#4A9EA8)' }} />}
+          {!mob && <div style={{ position: 'absolute', top: 26, left: '7%', right: '7%', height: 2, background: 'linear-gradient(90deg,#5B6AC4,#C9A0A8)' }} />}
           {PROCESS.map(([icon, title, line], i) => (
             <div key={title} style={{ position: 'relative', textAlign: 'center' }}>
               <div style={{ width: 54, height: 54, margin: '0 auto', borderRadius: 14, background: '#151A24', border: '1px solid #2A3140', display: 'flex', alignItems: 'center', justifyContent: 'center', color: T.blue, position: 'relative', zIndex: 1 }}>

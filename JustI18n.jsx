@@ -97,7 +97,7 @@ const JAW_STR = {
       flow2: 'В течение суток после звонка у вас готовый прототип.',
       flow3: 'Второй короткий звонок: проверяем, всё ли подходит.',
       flow4: 'И всё — сайт работает.',
-      build: 'Записаться на бесплатную консультацию', estimate: 'Оценить цену',
+      build: 'Записаться на бесплатную консультацию', estimate: 'Узнать цену',
       chip1: '☕ 15 минут разговора — и мы начинаем', chip2: '⚡ Готово за 3 дня',
       visitors: '+2 481 визит сегодня', revenue: 'Доход ↑ 214%',
       frameCta: 'Написать нам',
@@ -122,23 +122,23 @@ const JAW_STR = {
     steps: {
       title: 'Создание сайта должно быть простым.',
       items: [
-        { emoji: '📝', title: 'Расскажите о своём бизнесе.', sub: 'Одна короткая форма. Без брифов и жаргона.' },
-        { emoji: '💬', title: '30-минутная встреча онлайн.', sub: 'Обсуждаем цели в коротком звонке.' },
-        { emoji: '🎨', title: 'Мы проектируем и создаём всё.', sub: 'Тексты, дизайн, код — берём на себя.' },
-        { emoji: '🚀', title: 'Запуск. Начинайте расти.', sub: 'Публикуем и смотрим, как приходят клиенты.' },
+        { emoji: 'file-text', title: 'Расскажите о своём бизнесе.', sub: 'Одна короткая форма. Без брифов и жаргона.' },
+        { emoji: 'message-circle', title: '30-минутная встреча онлайн.', sub: 'Обсуждаем цели в коротком звонке.' },
+        { emoji: 'palette', title: 'Мы проектируем и создаём всё.', sub: 'Тексты, дизайн, код — берём на себя.' },
+        { emoji: 'rocket', title: 'Запуск. Начинайте расти.', sub: 'Публикуем и смотрим, как приходят клиенты.' },
       ],
     },
     features: {
       eyebrow: 'Всё включено', title: 'Полная комплектация.', hint: 'Наведите на карточку, чтобы увидеть детали.',
       items: [
-        { emoji: '⚡', title: 'Быстрый', line: 'Загружается меньше секунды, везде.' },
-        { emoji: '📱', title: 'Мобильный', line: 'Идеально на любом размере экрана.' },
-        { emoji: '🤖', title: 'Готов к AI', line: 'Встроенный ассистент и AI-инструменты.' },
-        { emoji: '🔍', title: 'SEO', line: 'Виден в поиске с первого дня.' },
-        { emoji: '🌍', title: 'Многоязычный', line: 'Общайтесь с клиентами на любом языке.' },
-        { emoji: '📊', title: 'Аналитика', line: 'Точно знайте, что делают посетители.' },
-        { emoji: '🔒', title: 'Безопасный', line: 'SSL, резервные копии и защита.' },
-        { emoji: '💳', title: 'Записи', line: 'Принимайте записи и платежи онлайн.' },
+        { emoji: 'zap', title: 'Быстрый', line: 'Загружается меньше секунды, везде.' },
+        { emoji: 'smartphone', title: 'Мобильный', line: 'Идеально на любом размере экрана.' },
+        { emoji: 'bot', title: 'Готов к AI', line: 'Встроенный ассистент и AI-инструменты.' },
+        { emoji: 'search', title: 'SEO', line: 'Виден в поиске с первого дня.' },
+        { emoji: 'globe', title: 'Многоязычный', line: 'Общайтесь с клиентами на любом языке.' },
+        { emoji: 'bar-chart-2', title: 'Аналитика', line: 'Точно знайте, что делают посетители.' },
+        { emoji: 'lock', title: 'Безопасный', line: 'SSL, резервные копии и защита.' },
+        { emoji: 'credit-card', title: 'Записи', line: 'Принимайте записи и платежи онлайн.' },
       ],
     },
     pricing: {
@@ -151,6 +151,7 @@ const JAW_STR = {
       careEyebrow: 'Постоянная поддержка', careTitle: 'Пусть сайт работает на вас.',
       careDesc: 'Мы продолжаем заботиться о сайте после запуска — быстрый, безопасный и актуальный.',
       perMonth: '/ месяц', careCta: 'Добавить поддержку сайта', careNote: 'Отмена в любой момент. Без договоров.',
+      careLimits: 'Что входит: небольшие правки текста и изображений, до 2 запросов в месяц, обычно за 2–3 рабочих дня. Не входит: новые страницы, редизайн разделов и крупные доработки — считаем отдельно.',
       promiseEyebrow: 'Наше обещание',
       promise: ['Если хватит меньшего пакета — мы скажем об этом.', 'Без скрытых расходов. Без сюрпризов в счёте.', 'После завершения сайт принадлежит вам.'],
       promiseBig: 'Нам важны долгосрочные отношения, а не разовая продажа.',
@@ -158,17 +159,17 @@ const JAW_STR = {
       finalStars: 'Большинство проектов начинается с бесплатного 30-минутного разговора.', finalCta: 'Записаться на бесплатную консультацию',
       plans: [
         { title: 'Just a Website', badge: 'Идеально, если просто нужно быть онлайн.', cta: 'Начинаем', note: 'Домен не включён.', timeline: 'Обычно готово за неделю.',
-          have: [['🌍','Профессиональное присутствие в сети'],['📱','Отлично смотрится на любом экране'],['✨','Современный, чистый дизайн'],['🧭','Понятно клиентам'],['✏️','Три раунда правок включены'],['📦','Файлы сайта принадлежат вам'],['🚀','Публикация по бесплатному адресу'],['🔄','Готов к будущим доработкам']],
+          have: [['globe','Профессиональное присутствие в сети'],['smartphone','Отлично смотрится на любом экране'],['sparkles','Современный, чистый дизайн'],['compass','Понятно клиентам'],['pencil','Три раунда правок включены'],['package','Файлы сайта принадлежат вам'],['rocket','Публикация по бесплатному адресу'],['refresh-cw','Готов к будущим доработкам']],
           care: ['Дружелюбная консультация','Планирование страницы','Адаптивный дизайн','Секция контактов','Простая форма связи','Подготовка файлов сайта','Публикация на бесплатном хостинге','Рабочая ссылка онлайн'] },
         { title: 'Business Website', badge: '⭐ Чаще всего выбирают', cta: 'Создать мой сайт', timeline: 'Около двух недель.',
-          have: [['💬','Понятный рассказ о вашем бизнесе'],['🤝','Больше доверия клиентов'],['📈','Больше шансов на заявки'],['🖼️','Красивые, оптимизированные фото'],['📄','Несколько страниц'],['📬','Формы обратной связи'],['🔍','Готов появиться в Google'],['⚡','Плавная, современная работа']],
+          have: [['message-circle','Понятный рассказ о вашем бизнесе'],['handshake','Больше доверия клиентов'],['trending-up','Больше шансов на заявки'],['image','Красивые, оптимизированные фото'],['file','Несколько страниц'],['mail','Формы обратной связи'],['search','Готов появиться в Google'],['zap','Плавная, современная работа']],
           care: ['Анкета по бизнесу','Понимание вашей компании','Помощь с текстами','Подготовка изображений','2–6 страниц','Интерактивные секции','Формы связи','Базовое SEO','Начальная GEO-оптимизация','Индексация в Google','Настройка аналитики','Три раунда правок','Запуск сайта'] },
         { title: 'Growth Website', badge: 'Лучший вариант для растущего бизнеса', cta: 'Создадим что-то большое', timeline: 'Около трёх-пяти недель.',
-          have: [['🚀','Создан, чтобы расти вместе с бизнесом'],['🎨','Премиальный визуальный опыт'],['🤖','Готов к AI-инструментам'],['📈','Больше возможностей для конверсии'],['⚙️','Готов к будущему расширению'],['✨','Сильное первое впечатление'],['🧠','Стратегия перед дизайном'],['🔗','Гибкий фундамент']],
+          have: [['rocket','Создан, чтобы расти вместе с бизнесом'],['palette','Премиальный визуальный опыт'],['bot','Готов к AI-инструментам'],['trending-up','Больше возможностей для конверсии'],['settings','Готов к будущему расширению'],['sparkles','Сильное первое впечатление'],['brain','Стратегия перед дизайном'],['link','Гибкий фундамент']],
           care: ['Бизнес-воркшоп','Анализ конкурентов','Планирование пути клиента','UX-планирование','Профессиональные тексты','Премиальная дизайн-система','Неограниченное число стандартных страниц','Интеграция записи','Интеграция CRM','Архитектура, готовая к AI','Стратегия привлечения лидов','Структура SEO','Подготовка AEO / GEO','Оптимизация производительности','Аналитика','Четыре недели поддержки после запуска'] },
       ],
-      extras: [['📷','Фотография'],['🎥','Видео'],['🎨','Логотип'],['✨','Фирменный стиль'],['🛒','Интернет-магазин'],['📅','Система записи'],['🤖','AI-ассистент в чате'],['🌍','Несколько языков'],['🏠','Хостинг'],['🔗','Домен'],['📍','Профиль в Google'],['✍️','SEO-тексты']],
-      careBenefits: [['🔄','Ежемесячные обновления'],['🔒','Мониторинг безопасности'],['💾','Резервные копии'],['⚡','Оптимизация скорости'],['✏️','Небольшие правки контента'],['📊','Ежемесячный отчёт'],['📞','Приоритетная поддержка'],['📧','Ежемесячная проверка']],
+      extras: [['camera','Фотография'],['video','Видео'],['palette','Логотип'],['sparkles','Фирменный стиль'],['shopping-cart','Интернет-магазин'],['calendar','Система записи'],['bot','AI-ассистент в чате'],['globe','Несколько языков'],['home','Хостинг'],['link','Домен'],['map-pin','Профиль в Google'],['edit-3','SEO-тексты']],
+      careBenefits: [['refresh-cw','Ежемесячные обновления'],['lock','Мониторинг безопасности'],['save','Резервные копии'],['zap','Оптимизация скорости'],['pencil','Небольшие правки контента'],['bar-chart-2','Ежемесячный отчёт'],['phone','Приоритетная поддержка'],['mail','Ежемесячная проверка']],
     },
     modal: {
       title: 'Записаться на бесплатную консультацию', desc: 'Спокойный разговор на 30 минут. Без давления, без уловок — только честный совет.',
@@ -338,23 +339,23 @@ const JAW_STR = {
     steps: {
       title: 'Créer un site devrait être simple.',
       items: [
-        { emoji: '📝', title: 'Parlez-nous de votre activité.', sub: 'Un court formulaire. Sans brief ni jargon.' },
-        { emoji: '💬', title: 'Réunion en ligne de 30 minutes.', sub: 'On aligne les objectifs lors d’un appel.' },
-        { emoji: '🎨', title: 'On conçoit et construit tout.', sub: 'Textes, design, développement — tout géré.' },
-        { emoji: '🚀', title: 'Lancement. Place à la croissance.', sub: 'Mise en ligne et les clients arrivent.' },
+        { emoji: 'file-text', title: 'Parlez-nous de votre activité.', sub: 'Un court formulaire. Sans brief ni jargon.' },
+        { emoji: 'message-circle', title: 'Réunion en ligne de 30 minutes.', sub: 'On aligne les objectifs lors d’un appel.' },
+        { emoji: 'palette', title: 'On conçoit et construit tout.', sub: 'Textes, design, développement — tout géré.' },
+        { emoji: 'rocket', title: 'Lancement. Place à la croissance.', sub: 'Mise en ligne et les clients arrivent.' },
       ],
     },
     features: {
       eyebrow: 'Tout est inclus', title: 'Entièrement équipé.', hint: 'Survolez une carte pour voir le détail.',
       items: [
-        { emoji: '⚡', title: 'Rapide', line: 'Se charge en moins d’une seconde, partout.' },
-        { emoji: '📱', title: 'Mobile', line: 'Parfait sur toutes les tailles d’écran.' },
-        { emoji: '🤖', title: 'Prêt pour l’IA', line: 'Assistant intégré et outils de contenu IA.' },
-        { emoji: '🔍', title: 'SEO', line: 'Référencé sur Google dès le premier jour.' },
-        { emoji: '🌍', title: 'Multilingue', line: 'Touchez vos clients dans toutes les langues.' },
-        { emoji: '📊', title: 'Analytique', line: 'Sachez exactement ce que font vos visiteurs.' },
-        { emoji: '🔒', title: 'Sécurisé', line: 'SSL, sauvegardes et protections inclus.' },
-        { emoji: '💳', title: 'Réservation', line: 'Réservations et paiements en ligne.' },
+        { emoji: 'zap', title: 'Rapide', line: 'Se charge en moins d’une seconde, partout.' },
+        { emoji: 'smartphone', title: 'Mobile', line: 'Parfait sur toutes les tailles d’écran.' },
+        { emoji: 'bot', title: 'Prêt pour l’IA', line: 'Assistant intégré et outils de contenu IA.' },
+        { emoji: 'search', title: 'SEO', line: 'Référencé sur Google dès le premier jour.' },
+        { emoji: 'globe', title: 'Multilingue', line: 'Touchez vos clients dans toutes les langues.' },
+        { emoji: 'bar-chart-2', title: 'Analytique', line: 'Sachez exactement ce que font vos visiteurs.' },
+        { emoji: 'lock', title: 'Sécurisé', line: 'SSL, sauvegardes et protections inclus.' },
+        { emoji: 'credit-card', title: 'Réservation', line: 'Réservations et paiements en ligne.' },
       ],
     },
     pricing: {
@@ -367,6 +368,7 @@ const JAW_STR = {
       careEyebrow: 'Suivi continu', careTitle: 'Gardez un site qui travaille pour vous.',
       careDesc: 'Nous continuons à entretenir votre site après le lancement — rapide, sûr et à jour.',
       perMonth: '/ mois', careCta: 'Ajouter le suivi', careNote: 'Annulable à tout moment. Sans engagement.',
+      careLimits: 'Inclus : petites modifications de texte et d’images, jusqu’à 2 demandes par mois, traitées en 2 à 3 jours ouvrés. Non inclus : nouvelles pages, refonte de sections ou travaux importants — devis séparé.',
       promiseEyebrow: 'Notre promesse',
       promise: ['Si un forfait plus petit suffit, on vous le dira.', 'Aucun coût caché. Aucune facture surprise.', 'Le site vous appartient une fois terminé.'],
       promiseBig: 'Nous visons des relations durables, pas des ventes ponctuelles.',
@@ -374,17 +376,17 @@ const JAW_STR = {
       finalStars: 'La plupart des projets commencent par un échange gratuit de 30 minutes.', finalCta: 'Réserver une consultation gratuite',
       plans: [
         { title: 'Just a Website', badge: 'Parfait si vous voulez simplement être en ligne.', cta: 'Commençons', note: 'Le nom de domaine n’est pas inclus.', timeline: 'Généralement prêt en une semaine.',
-          have: [['🌍','Une présence en ligne professionnelle'],['📱','Superbe sur chaque écran'],['✨','Un design moderne et épuré'],['🧭','Facile à comprendre pour vos clients'],['✏️','Trois séries de modifications incluses'],['📦','Les fichiers du site vous appartiennent'],['🚀','En ligne sur une adresse gratuite'],['🔄','Prêt pour de futures améliorations']],
+          have: [['globe','Une présence en ligne professionnelle'],['smartphone','Superbe sur chaque écran'],['sparkles','Un design moderne et épuré'],['compass','Facile à comprendre pour vos clients'],['pencil','Trois séries de modifications incluses'],['package','Les fichiers du site vous appartiennent'],['rocket','En ligne sur une adresse gratuite'],['refresh-cw','Prêt pour de futures améliorations']],
           care: ['Consultation conviviale','Planification de la page','Design responsive','Section contact','Formulaire de contact simple','Préparation des fichiers du site','Publication sur hébergement gratuit','Lien en ligne fonctionnel'] },
         { title: 'Business Website', badge: '⭐ Le plus choisi', cta: 'Créer mon site', timeline: 'Environ deux semaines.',
-          have: [['💬','Un récit clair de votre activité'],['🤝','Plus de confiance des clients'],['📈','Plus de chances de demandes'],['🖼️','De belles images optimisées'],['📄','Plusieurs pages'],['📬','Formulaires de contact'],['🔍','Prêt à apparaître sur Google'],['⚡','Une expérience fluide et moderne']],
+          have: [['message-circle','Un récit clair de votre activité'],['handshake','Plus de confiance des clients'],['trending-up','Plus de chances de demandes'],['image','De belles images optimisées'],['file','Plusieurs pages'],['mail','Formulaires de contact'],['search','Prêt à apparaître sur Google'],['zap','Une expérience fluide et moderne']],
           care: ['Questionnaire d’entreprise','Compréhension de votre activité','Aide à la rédaction','Préparation des images','2 à 6 pages','Sections interactives','Formulaires de contact','SEO de base','Optimisation GEO initiale','Indexation Google','Configuration analytique','Trois séries de révisions','Lancement du site'] },
         { title: 'Growth Website', badge: 'Idéal pour les entreprises en croissance', cta: 'Créons quelque chose de grand', timeline: 'Environ trois à cinq semaines.',
-          have: [['🚀','Conçu pour grandir avec vous'],['🎨','Une expérience visuelle premium'],['🤖','Prêt pour les outils IA'],['📈','De meilleures conversions'],['⚙️','Prêt pour l’expansion future'],['✨','Une forte première impression'],['🧠','La stratégie avant le design'],['🔗','Une base flexible']],
+          have: [['rocket','Conçu pour grandir avec vous'],['palette','Une expérience visuelle premium'],['bot','Prêt pour les outils IA'],['trending-up','De meilleures conversions'],['settings','Prêt pour l’expansion future'],['sparkles','Une forte première impression'],['brain','La stratégie avant le design'],['link','Une base flexible']],
           care: ['Atelier stratégique','Analyse concurrentielle','Parcours client','Planification UX','Rédaction professionnelle','Système de design premium','Pages standard illimitées','Intégration de réservation','Intégration CRM','Architecture prête pour l’IA','Stratégie de génération de leads','Structure SEO','Préparation AEO / GEO','Optimisation des performances','Analytique','Quatre semaines de suivi après lancement'] },
       ],
-      extras: [['📷','Photographie'],['🎥','Vidéo'],['🎨','Logo'],['✨','Identité de marque'],['🛒','Boutique en ligne'],['📅','Système de réservation'],['🤖','Assistant IA'],['🌍','Plusieurs langues'],['🏠','Hébergement'],['🔗','Nom de domaine'],['📍','Fiche Google'],['✍️','Rédaction SEO']],
-      careBenefits: [['🔄','Mises à jour mensuelles'],['🔒','Surveillance de sécurité'],['💾','Sauvegardes'],['⚡','Optimisation de vitesse'],['✏️','Petites modifications de contenu'],['📊','Rapport mensuel'],['📞','Support prioritaire'],['📧','Bilan mensuel']],
+      extras: [['camera','Photographie'],['video','Vidéo'],['palette','Logo'],['sparkles','Identité de marque'],['shopping-cart','Boutique en ligne'],['calendar','Système de réservation'],['bot','Assistant IA'],['globe','Plusieurs langues'],['home','Hébergement'],['link','Nom de domaine'],['map-pin','Fiche Google'],['edit-3','Rédaction SEO']],
+      careBenefits: [['refresh-cw','Mises à jour mensuelles'],['lock','Surveillance de sécurité'],['save','Sauvegardes'],['zap','Optimisation de vitesse'],['pencil','Petites modifications de contenu'],['bar-chart-2','Rapport mensuel'],['phone','Support prioritaire'],['mail','Bilan mensuel']],
     },
     modal: {
       title: 'Réserver une consultation gratuite', desc: 'Un échange détendu de 30 minutes. Sans pression, sans techniques de vente — juste des conseils honnêtes.',
@@ -470,18 +472,18 @@ function jawUseLang() {
 /* ---------- language switcher ---------- */
 function LangSwitch({ dark }) {
   const [lang, , setLang] = jawUseLang();
-  const border = dark ? 'rgba(255,255,255,0.18)' : '#E7E9EC';
-  const idle = dark ? 'rgba(255,255,255,0.7)' : '#6B7280';
+  const border = dark ? 'rgba(255,255,255,0.18)' : '#DFE1EC';
+  const idle = dark ? 'rgba(255,255,255,0.7)' : '#7A7F92';
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', background: dark ? 'rgba(255,255,255,0.06)' : '#fff', border: '1px solid ' + border, borderRadius: 999, padding: 3 }}>
       {JAW_LANGS.map((l) => {
         const on = l === lang;
         return (
           <button key={l} onClick={() => setLang(l)} aria-pressed={on}
-            style={{ fontFamily: "'Archivo', system-ui, sans-serif", fontWeight: 700, fontSize: 12.5, letterSpacing: '0.03em',
+            style={{ fontFamily: "'Karla', system-ui, sans-serif", fontWeight: 700, fontSize: 12.5, letterSpacing: '0.03em',
               padding: '6px 11px', borderRadius: 999, border: 'none', cursor: 'pointer',
-              color: on ? '#fff' : idle, background: on ? '#2F6BFF' : 'transparent',
-              boxShadow: on ? '0 3px 10px rgba(47,107,255,0.35)' : 'none', transition: 'all .18s cubic-bezier(.2,0,.1,1)' }}>
+              color: on ? '#fff' : idle, background: on ? '#5B6AC4' : 'transparent',
+              boxShadow: on ? '0 3px 10px rgba(91,106,196,0.35)' : 'none', transition: 'all .18s cubic-bezier(.2,0,.1,1)' }}>
             {JAW_LANG_LABEL[l]}
           </button>
         );

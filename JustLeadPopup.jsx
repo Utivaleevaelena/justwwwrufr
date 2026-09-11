@@ -87,7 +87,7 @@ function JustLeadPopup() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '14px 0 6px' }}>
             <div style={{ width: 80, height: 80, borderRadius: 999, background: T.blueSoft, display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'jawPop .5s cubic-bezier(.16,1.4,.3,1)' }}>
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2F6BFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5B6AC4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
             </div>
             <h3 style={{ fontFamily: T.display, fontSize: 32, color: T.ink, margin: '20px 0 0' }}>{t('lead.okTitle')}</h3>
             <p style={{ fontFamily: T.body, fontSize: 15, color: T.muted, margin: '10px 0 0', maxWidth: 340 }}>{t('lead.ok')}</p>

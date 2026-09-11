@@ -12,8 +12,8 @@ function fmt(v) {
 
 // static (non-text) plan config, merged by index with translated text from the dictionary
 const PLAN_META = [
-  { price: 200, variant: 'ghost', popular: false },
-  { price: 390, variant: 'primary', popular: true },
+  { price: 300, variant: 'ghost', popular: false },
+  { price: 590, variant: 'primary', popular: true },
   { price: 990, variant: 'dark', popular: false },
 ];
 const CARE_PRICE = 25;
@@ -28,12 +28,12 @@ function PlanCard({ plan, meta, onCta, t }) {
         border: '1px solid ' + (pop ? T.blueBorder : T.line),
         outline: pop ? '2px solid ' + T.blue : 'none', outlineOffset: -2,
         padding: '38px 30px 30px', display: 'flex', flexDirection: 'column', minWidth: 0,
-        boxShadow: h ? '0 34px 70px rgba(16,24,40,0.14)' : (pop ? '0 20px 50px rgba(47,107,255,0.16)' : '0 12px 34px rgba(16,24,40,0.06)'),
+        boxShadow: h ? '0 34px 70px rgba(16,24,40,0.14)' : (pop ? '0 20px 50px rgba(91,106,196,0.16)' : '0 12px 34px rgba(16,24,40,0.06)'),
         transform: h ? 'translateY(-8px)' : 'translateY(0)', transition: 'all .35s cubic-bezier(.16,1,.3,1)' }}>
       {pop && (
         <div style={{ position: 'absolute', top: -15, left: '50%', transform: 'translateX(-50%)', background: T.blue, color: '#fff',
           fontFamily: T.body, fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', padding: '7px 16px', borderRadius: 999,
-          boxShadow: '0 8px 20px rgba(47,107,255,0.4)', whiteSpace: 'nowrap' }}>{t('pricing.popular')}</div>
+          boxShadow: '0 8px 20px rgba(91,106,196,0.4)', whiteSpace: 'nowrap' }}>{t('pricing.popular')}</div>
       )}
 
       <div style={{ fontFamily: T.display, fontSize: 34, color: T.ink, lineHeight: 1 }}>{plan.title}</div>
@@ -55,7 +55,9 @@ function PlanCard({ plan, meta, onCta, t }) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: 10, marginTop: 14 }}>
         {plan.have.map(([e, label], i) => (
           <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', background: T.bgAlt, borderRadius: 14, padding: '12px 12px', minWidth: 0 }}>
-            <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0 }}>{e}</span>
+            <div style={{ width: 26, height: 26, borderRadius: 8, background: '#fff', border: '1px solid ' + T.line, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: T.blue }}>
+              <i data-lucide={e} style={{ width: 14, height: 14 }}></i>
+            </div>
             <span style={{ fontFamily: T.body, fontSize: 13, color: T.ink2, lineHeight: 1.35, minWidth: 0, overflowWrap: 'break-word' }}>{label}</span>
           </div>
         ))}
@@ -87,13 +89,16 @@ function PlanCard({ plan, meta, onCta, t }) {
 /* ---------- extras ---------- */
 function ExtraCard({ e, label, from, delay }) {
   const [h, setH] = React.useState(false);
+  React.useEffect(() => { window.lucide && window.lucide.createIcons(); });
   return (
     <div onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
       style={{ background: '#fff', borderRadius: 18, border: '1px solid ' + (h ? T.blueBorder : T.line), padding: '20px 18px',
-        boxShadow: h ? '0 18px 38px rgba(47,107,255,0.12)' : '0 6px 18px rgba(16,24,40,0.05)',
+        boxShadow: h ? '0 18px 38px rgba(91,106,196,0.12)' : '0 6px 18px rgba(16,24,40,0.05)',
         transform: h ? 'translateY(-6px)' : 'translateY(0)', transition: 'all .3s cubic-bezier(.16,1,.3,1)',
         animation: `jawFloat 6s ease-in-out ${delay}ms infinite`, cursor: 'default' }}>
-      <div style={{ fontSize: 28, lineHeight: 1 }}>{e}</div>
+      <div style={{ width: 42, height: 42, borderRadius: 11, background: T.blueSoft, display: 'flex', alignItems: 'center', justifyContent: 'center', color: T.blue }}>
+        <i data-lucide={e} style={{ width: 20, height: 20 }}></i>
+      </div>
       <div style={{ fontFamily: T.body, fontWeight: 700, fontSize: 15.5, color: T.ink, marginTop: 12 }}>{label}</div>
       <div style={{ fontFamily: T.body, fontSize: 12.5, color: T.muted, marginTop: 4 }}>{from}</div>
     </div>
@@ -155,7 +160,7 @@ function ConsultModal({ open, onClose, t }) {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '20px 0 8px' }}>
             <div style={{ width: 84, height: 84, borderRadius: 999, background: T.blueSoft, display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'jawPop .5s cubic-bezier(.16,1.4,.3,1)' }}>
-              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#2F6BFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#5B6AC4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
             </div>
             <h3 style={{ fontFamily: T.display, fontSize: 34, color: T.ink, margin: '22px 0 0' }}>{t('modal.okTitle')}</h3>
             <p style={{ fontFamily: T.body, fontSize: 15.5, color: T.muted, margin: '10px 0 0', maxWidth: 360 }}>{t('modal.okHi')}{data.name ? ', ' + data.name.split(' ')[0] : ''} {t('modal.ok')}</p>
@@ -235,10 +240,10 @@ function JustPricing({ onBuild, panelRef }) {
         {/* website care */}
         <Reveal>
           <div style={{ marginTop: 100, background: T.ink, borderRadius: 28, padding: mob ? 28 : 44, color: '#fff', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: -80, right: -60, width: 320, height: 320, background: 'radial-gradient(circle, rgba(47,107,255,0.45), transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: -80, right: -60, width: 320, height: 320, background: 'radial-gradient(circle, rgba(91,106,196,0.45), transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: mob ? '1fr' : '1.1fr 1fr', gap: mob ? 30 : 44, alignItems: 'center' }}>
               <div>
-                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#6FA0FF' }}>{t('pricing.careEyebrow')}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#B7C0F0' }}>{t('pricing.careEyebrow')}</div>
                 <h3 style={{ fontFamily: T.display, fontSize: 'clamp(28px, 7vw, 42px)', lineHeight: 1.02, margin: '14px 0 0' }}>{t('pricing.careTitle')}</h3>
                 <p style={{ fontFamily: T.body, fontSize: 16, color: 'rgba(255,255,255,0.72)', margin: '14px 0 26px', lineHeight: 1.55 }}>{t('pricing.careDesc')}</p>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
@@ -249,11 +254,12 @@ function JustPricing({ onBuild, panelRef }) {
                   <JustButton variant="primary" size="lg" icon="arrow-right" onClick={onBuild} style={{ justifyContent: 'center' }}>{t('pricing.careCta')}</JustButton>
                 </div>
                 <p style={{ fontFamily: T.body, fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16 }}>{t('pricing.careNote')}</p>
+                <p style={{ fontFamily: T.body, fontSize: 12.5, color: 'rgba(255,255,255,0.5)', marginTop: 10, lineHeight: 1.5, maxWidth: 440 }}>{t('pricing.careLimits')}</p>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 {careBenefits.map(([e, label], i) => (
                   <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'center', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14, padding: '13px 14px' }}>
-                    <span style={{ fontSize: 18, lineHeight: 1 }}>{e}</span>
+                    <i data-lucide={e} style={{ width: 17, height: 17, color: '#B7C0F0', flexShrink: 0 }}></i>
                     <span style={{ fontFamily: T.body, fontSize: 13, color: 'rgba(255,255,255,0.9)', lineHeight: 1.3 }}>{label}</span>
                   </div>
                 ))}
@@ -264,17 +270,27 @@ function JustPricing({ onBuild, panelRef }) {
 
         {/* our promise */}
         <Reveal>
-          <div style={{ marginTop: 100, background: '#fff', border: '1px solid ' + T.line, borderRadius: 28, padding: mob ? '40px 24px' : '56px 40px', textAlign: 'center', boxShadow: '0 12px 40px rgba(16,24,40,0.05)' }}>
-            <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: T.blue }}>{t('pricing.promiseEyebrow')}</div>
-            <div style={{ fontSize: 64, marginTop: 18, lineHeight: 1 }}>🛡️</div>
-            <div style={{ display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', margin: '32px auto 0', maxWidth: 780 }}>
-              {promise.map((tx) => (
-                <div key={tx} style={{ flex: '1 1 200px', maxWidth: 240, fontFamily: T.body, fontSize: 15.5, color: T.ink2, lineHeight: 1.5 }}>{tx}</div>
-              ))}
+          <div style={{ position: 'relative', marginTop: 100, borderRadius: 28, overflow: 'hidden', boxShadow: '0 20px 60px rgba(16,24,40,0.12)', minHeight: mob ? 'auto' : 480 }}>
+            <img src="./assets/promise-photo.png" alt="" width={1672} height={941}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(250,248,243,0.1) 0%, rgba(250,248,243,0.72) 42%, rgba(250,248,243,0.94) 100%)', zIndex: 1 }} />
+            <div style={{ position: 'relative', zIndex: 2, padding: mob ? '40px 24px' : '64px 40px 56px', textAlign: 'center' }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: T.blueDark }}>{t('pricing.promiseEyebrow')}</div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 60, height: 60, borderRadius: 999, background: '#fff', border: '1px solid ' + T.line, marginTop: 18, boxShadow: '0 8px 20px rgba(16,24,40,0.08)' }}>
+                <i data-lucide="shield-check" style={{ width: 28, height: 28, color: T.blue }}></i>
+              </div>
+              <div style={{ display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap', margin: '32px auto 0', maxWidth: 780 }}>
+                {promise.map((tx) => (
+                  <div key={tx} style={{ display: 'flex', alignItems: 'center', gap: 8, flex: '1 1 220px', maxWidth: 260, background: 'rgba(255,255,255,0.7)', border: '1px solid ' + T.line, borderRadius: 12, padding: '12px 16px', textAlign: 'left' }}>
+                    <i data-lucide="check" style={{ width: 16, height: 16, color: T.blue, flexShrink: 0 }}></i>
+                    <span style={{ fontFamily: T.body, fontSize: 14.5, color: T.ink2, lineHeight: 1.4 }}>{tx}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontFamily: T.display, fontSize: 'clamp(22px, 5.5vw, 30px)', color: T.ink, lineHeight: 1.15, margin: '44px auto 0', maxWidth: 620 }}>
+                {t('pricing.promiseBig')}
+              </p>
             </div>
-            <p style={{ fontFamily: T.display, fontSize: 'clamp(22px, 5.5vw, 30px)', color: T.ink, lineHeight: 1.15, margin: '44px auto 0', maxWidth: 620 }}>
-              {t('pricing.promiseBig')}
-            </p>
           </div>
         </Reveal>
 

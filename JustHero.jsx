@@ -54,7 +54,7 @@ function LiveFrame({ stage }) {
       {/* content cells */}
       <div style={{ display: 'grid', gridTemplateColumns: narrow ? '1fr' : '1fr 1fr 1fr', gap: 9, width: narrow ? '60%' : '100%', flex: 1, minHeight: 62 }}>
         {(narrow ? [0, 1] : [0, 1, 2]).map((n) => (
-          <div key={n} style={{ borderRadius: 9, background: flat ? block : 'linear-gradient(150deg, #DCE6FF 0%, #EFF3FB 55%, #E4EAF6 100%)',
+          <div key={n} style={{ borderRadius: 9, background: flat ? block : 'linear-gradient(150deg, #E7E9F7 0%, #FBF6EE 55%, #EFE2D2 100%)',
             display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 8, gap: 5 }}>
             <div style={bar(flat ? '#fff' : 'rgba(255,255,255,0.9)', '80%', 6, 3)} />
             <div style={bar(flat ? '#fff' : 'rgba(255,255,255,0.7)', '55%', 6, 3)} />
@@ -96,7 +96,7 @@ function ProcessStage() {
 
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      <div style={{ position: 'absolute', inset: -40, background: 'radial-gradient(circle at 60% 40%, rgba(47,107,255,0.16), transparent 60%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: -40, background: 'radial-gradient(circle at 60% 40%, rgba(91,106,196,0.16), transparent 60%)', pointerEvents: 'none' }} />
 
       {/* explicit process caption — makes clear this is an illustration, not loading */}
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 14, flexWrap: 'wrap' }}>
@@ -144,40 +144,45 @@ function JustHero({ onBuild, onEstimate }) {
   const mob = window.jawUseMobile(900);
   const flow = ['flow1', 'flow2', 'flow3', 'flow4'];
   return (
-    <section style={{ ...T.wrap, paddingTop: mob ? 40 : 78, paddingBottom: mob ? 56 : 86 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1.08fr', gap: mob ? 44 : 48, alignItems: 'center' }}>
-        <div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '7px 14px', borderRadius: 999, background: T.blueSoft, color: T.blueDark, fontFamily: T.body, fontWeight: 600, fontSize: 13, border: '1px solid ' + T.blueBorder }}>
-            <span style={{ width: 7, height: 7, borderRadius: 999, background: T.blue }} /> {t('hero.badge')}
+    <section style={{ position: 'relative', width: '100%', overflow: 'hidden', minHeight: mob ? 560 : 'clamp(560px, 62vw, 760px)', display: 'flex', alignItems: 'center' }}>
+      <img src="./assets/hero-photo.png" alt="" width={1448} height={1086}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: mob ? 'center' : 'left center', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, background: mob
+        ? 'linear-gradient(180deg, rgba(15,16,24,0.45) 0%, rgba(15,16,24,0.8) 60%, rgba(15,16,24,0.9) 100%)'
+        : 'linear-gradient(105deg, rgba(15,16,24,0.35) 0%, rgba(15,16,24,0.15) 46%, transparent 62%)', zIndex: 1 }} />
+      <div style={{ ...T.wrap, position: 'relative', zIndex: 2, paddingTop: mob ? 100 : 64, paddingBottom: mob ? 48 : 64 }}>
+        <div style={{ maxWidth: 560, background: 'rgba(15,16,24,0.58)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', borderRadius: 24, border: '1px solid rgba(255,255,255,0.1)', padding: mob ? '28px 22px' : '40px 38px', boxShadow: '0 30px 70px rgba(0,0,0,0.35)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '7px 14px', borderRadius: 999, background: 'rgba(255,255,255,0.12)', color: '#fff', fontFamily: T.body, fontWeight: 600, fontSize: 13, border: '1px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(6px)' }}>
+            <span style={{ width: 7, height: 7, borderRadius: 999, background: '#8FA0FF' }} /> {t('hero.badge')}
           </div>
-          <h1 style={{ fontFamily: T.display, fontSize: 'clamp(44px, 10vw, 76px)', lineHeight: 0.98, letterSpacing: '0.01em', color: T.ink, margin: '22px 0 0' }}>
-            {t('hero.t1')}<br /><span style={{ color: T.blue }}>{t('hero.t2')}</span>
+          <h1 style={{ fontFamily: T.display, fontSize: 'clamp(38px, 8vw, 64px)', lineHeight: 0.98, letterSpacing: '0.01em', color: '#fff', margin: '22px 0 0' }}>
+            {t('hero.t1')}<br /><span style={{ color: '#8FA0FF' }}>{t('hero.t2')}</span>
           </h1>
-          <p style={{ fontFamily: T.body, fontSize: 'clamp(17px, 4.2vw, 20px)', lineHeight: 1.5, color: T.ink2, maxWidth: 520, margin: '22px 0 0' }}>
+          <p style={{ fontFamily: T.body, fontSize: 'clamp(16px, 3.6vw, 19px)', lineHeight: 1.5, color: 'rgba(255,255,255,0.82)', maxWidth: 480, margin: '20px 0 0' }}>
             {t('hero.sub')}
           </p>
 
           {/* four-step flow, spelled out */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 26, maxWidth: 520 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 24, maxWidth: 480 }}>
             {flow.map((k, n) => (
               <div key={k} style={{ display: 'flex', alignItems: 'flex-start', gap: 11 }}>
-                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: 999, background: T.blueSoft, border: '1px solid ' + T.blueBorder,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: T.body, fontWeight: 700, fontSize: 11.5, color: T.blueDark }}>{n + 1}</span>
-                <span style={{ fontFamily: T.body, fontSize: 15.5, lineHeight: 1.4, color: T.ink2 }}>{t('hero.' + k)}</span>
+                <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: 999, background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.28)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: T.body, fontWeight: 700, fontSize: 11.5, color: '#fff' }}>{n + 1}</span>
+                <span style={{ fontFamily: T.body, fontSize: 15, lineHeight: 1.4, color: 'rgba(255,255,255,0.82)' }}>{t('hero.' + k)}</span>
               </div>
             ))}
           </div>
 
-          <div style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 14, marginTop: 30, flexWrap: 'wrap' }}>
             <JustButton variant="primary" size="lg" icon="arrow-right" onClick={onBuild}>{t('hero.build')}</JustButton>
-            <JustButton variant="ghost" size="lg" icon="calculator" onClick={onEstimate}>{t('hero.estimate')}</JustButton>
+            <JustButton variant="ghost" size="lg" icon="calculator" onClick={onEstimate}
+              style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.35)' }}>{t('hero.estimate')}</JustButton>
           </div>
-          <div style={{ display: 'flex', gap: 26, marginTop: 26, fontFamily: T.body, color: T.muted, fontSize: 14, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 26, marginTop: 24, fontFamily: T.body, color: 'rgba(255,255,255,0.7)', fontSize: 14, flexWrap: 'wrap' }}>
             <span>{t('hero.chip1')}</span>
             <span>{t('hero.chip2')}</span>
           </div>
         </div>
-        <ProcessStage />
       </div>
     </section>
   );

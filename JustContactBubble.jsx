@@ -65,7 +65,7 @@ function JustContactBubble({ source = 'Case Study page — floating bubble' }) {
           style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 20px', borderRadius: 999,
             background: T.blue, color: '#fff', border: '1px solid ' + T.blue, cursor: 'pointer',
             fontFamily: T.body, fontWeight: 600, fontSize: 15, lineHeight: 1,
-            boxShadow: '0 14px 34px rgba(47,107,255,0.38)' }}>
+            boxShadow: '0 14px 34px rgba(91,106,196,0.38)' }}>
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
           {t('bubble.label')}
         </button>
@@ -98,7 +98,7 @@ function JustContactBubble({ source = 'Case Study page — floating bubble' }) {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '30px 22px 34px' }}>
           <div style={{ width: 56, height: 56, borderRadius: 999, background: T.blueSoft, display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'jawPop .5s cubic-bezier(.16,1.4,.3,1)' }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2F6BFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5B6AC4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
           </div>
           <div style={{ fontFamily: T.display, fontSize: 26, color: T.ink, marginTop: 16 }}>{t('contact.okTitle')}</div>
           <div style={{ fontFamily: T.body, fontSize: 14, color: T.muted, marginTop: 8, lineHeight: 1.45 }}>

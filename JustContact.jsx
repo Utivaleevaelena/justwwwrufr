@@ -55,7 +55,7 @@ function JustContact({ formRef }) {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 300, textAlign: 'center' }}>
               <div style={{ width: 84, height: 84, borderRadius: 999, background: T.blueSoft, display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'jawPop .5s cubic-bezier(.16,1.4,.3,1)' }}>
-                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#2F6BFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path className="jaw-check" d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#5B6AC4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path className="jaw-check" d="M20 6 9 17l-5-5" style={{ strokeDasharray: 40, strokeDashoffset: 40, animation: 'jawDraw .5s .2s forwards' }} /></svg>
               </div>
               <h3 style={{ fontFamily: T.display, fontSize: 34, color: T.ink, margin: '22px 0 0' }}>{t('contact.okTitle')}</h3>
               <p style={{ fontFamily: T.body, fontSize: 16, color: T.muted, margin: '10px 0 0', maxWidth: 380 }}>{t('contact.okHi')}{data.name ? ', ' + data.name.split(' ')[0] : ''} {t('contact.ok')}</p>

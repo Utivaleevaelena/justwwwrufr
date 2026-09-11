@@ -131,7 +131,7 @@ function JustCaseStudy({ onContact }) {
       <section style={{ background: T.ink, padding: mob ? '60px 0' : '96px 0' }}>
         <div style={T.wrap}>
           <Reveal>
-            <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7FA6FF' }}>{t('cs.principlesEyebrow')}</div>
+            <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#B7C0F0' }}>{t('cs.principlesEyebrow')}</div>
             <h2 style={{ fontFamily: T.display, fontSize: 'clamp(32px, 8vw, 54px)', lineHeight: 1.02, color: '#fff', margin: '14px 0 0' }}>{t('cs.principlesTitle')}</h2>
             <p style={{ fontFamily: T.body, fontSize: 17, color: 'rgba(255,255,255,0.6)', fontStyle: 'italic', margin: '12px 0 0' }}>{t('cs.principlesIntro')}</p>
           </Reveal>
