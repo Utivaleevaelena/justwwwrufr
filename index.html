@@ -1,35 +1,53 @@
 <!-- @dsCard group="Just a Website" viewport="1280x900" name="Just a Website — Landing Page" subtitle="Interactive product-style landing with live website configurator" -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){
+  var GA_ID = 'G-C4Z8NGVTEC'; // ⬅️ замени на свой GA4 Measurement ID
+  var c; try { c = localStorage.getItem('jaw_consent'); } catch(e) {}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', { analytics_storage: c === 'all' ? 'granted' : 'denied', ad_storage: 'denied' });
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+  window.jawTrack = function(name, params){ try { gtag('event', name, params || {}); } catch(e) {} };
+  if (GA_ID && GA_ID.indexOf('XXXX') === -1) {
+    var s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+})();
+</script>
 <title>Just a Website — Simple Websites Built For You in Days | Pixel Experts</title>
 <meta name="description" content="Need a simple website but don't want to deal with builders, agencies, or code? Pixel Experts builds clean, fast, professional websites for small businesses in days — fixed price, no jargon. Just tell us what you need.">
 <meta name="keywords" content="who can make me a website, simple website service, small business website, done for you website, affordable website builder, website for my business, hire someone to build a website">
 <meta name="author" content="Pixel Experts">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://justwebsight-psi.vercel.app/">
+<link rel="canonical" href="https://justwwwrufr.vercel.app/">
 <meta name="ext-resource-dependency" content="./assets/case-herbaczar.webp" data-resource-id="case_herbaczar" />
 <meta name="ext-resource-dependency" content="./assets/case-sacred.webp" data-resource-id="case_sacred" />
 <meta name="ext-resource-dependency" content="./assets/case-budrysowka.webp" data-resource-id="case_budrysowka" />
 <meta name="ext-resource-dependency" content="./assets/case-pixel.webp" data-resource-id="case_pixel" />
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://justwebsight-psi.vercel.app/">
+<meta property="og:url" content="https://justwwwrufr.vercel.app/">
 <meta property="og:title" content="Just a Website — Simple Websites Built For You in Days">
 <meta property="og:description" content="Clean, fast, professional websites for small businesses. Fixed price, no jargon, no builders to learn. Just tell us what you need and we build it.">
-<meta property="og:image" content="https://justwebsight-psi.vercel.app/assets/case-herbaczar.png">
+<meta property="og:image" content="https://justwwwrufr.vercel.app/assets/case-herbaczar.png">
 <meta property="og:site_name" content="Just a Website by Pixel Experts">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Just a Website — Simple Websites Built For You in Days">
 <meta name="twitter:description" content="Clean, fast, professional websites for small businesses. Fixed price, no jargon. Just tell us what you need.">
-<meta name="twitter:image" content="https://justwebsight-psi.vercel.app/assets/case-herbaczar.png">
+<meta name="twitter:image" content="https://justwwwrufr.vercel.app/assets/case-herbaczar.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "ProfessionalService",
-      "@id": "https://justwebsight-psi.vercel.app/#business",
+      "@id": "https://justwwwrufr.vercel.app/#business",
       "name": "Just a Website by Pixel Experts",
       "description": "Done-for-you website service for small businesses. We design and build simple, clean, fast websites so you don't have to learn a website builder or hire an agency.",
-      "url": "https://justwebsight-psi.vercel.app/",
+      "url": "https://justwwwrufr.vercel.app/",
       "email": "elena@pixelexpertsteam.com",
       "telephone": "+1-858-212-8350",
       "priceRange": "$$",
@@ -53,7 +71,7 @@
     },
     {
       "@type": "FAQPage",
-      "@id": "https://justwebsight-psi.vercel.app/#faq",
+      "@id": "https://justwwwrufr.vercel.app/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -132,7 +150,7 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <script type="text/babel" src="JustTheme.jsx"></script>
 <script type="text/babel" src="JustI18n.jsx"></script>
 <script type="text/babel" src="JustHero.jsx"></script>
@@ -168,23 +186,28 @@ function Nav({ onBuild }) {
 }
 
 function App() {
+  const [lang, t] = window.jawUseLang();
   const cfgRef = React.useRef(null), formRef = React.useRef(null);
+  const [plan, setPlan] = React.useState('');
+  const [consultOpen, setConsultOpen] = React.useState(false);
   const scrollTo = (ref) => { if (ref.current) window.scrollTo({ top: ref.current.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' }); };
   const toForm = () => scrollTo(formRef), toCfg = () => scrollTo(cfgRef);
+  const openConsult = () => setConsultOpen(true);
   React.useEffect(() => { const id = setInterval(() => window.lucide && window.lucide.createIcons(), 400); return () => clearInterval(id); }, []);
   return (
     <React.Fragment>
-      <Nav onBuild={toForm} />
-      <window.JustHero onBuild={toForm} onEstimate={toCfg} />
+      <Nav onBuild={openConsult} />
+      <window.JustHero onBuild={openConsult} onEstimate={toCfg} />
       <window.JustTrust />
       <window.JustSteps />
       <window.JustFeatures />
-      <window.JustPricing onBuild={toForm} panelRef={cfgRef} />
+      <window.JustPricing onBuild={toForm} panelRef={cfgRef} onSelectPlan={setPlan} />
       <window.JustProcess />
-      <window.JustContact formRef={formRef} />
+      <window.JustContact formRef={formRef} plan={plan} />
       <window.JustFooter />
       <window.JustLeadPopup />
       <window.JustConsent />
+      <window.ConsultModal open={consultOpen} onClose={() => setConsultOpen(false)} t={t} lang={lang} />
     </React.Fragment>
   );
 }

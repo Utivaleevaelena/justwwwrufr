@@ -174,8 +174,8 @@ function JustHero({ onBuild, onEstimate }) {
           </div>
 
           <div style={{ display: 'flex', gap: 14, marginTop: 30, flexWrap: 'wrap' }}>
-            <JustButton variant="primary" size="lg" icon="arrow-right" onClick={onBuild}>{t('hero.build')}</JustButton>
-            <JustButton variant="ghost" size="lg" icon="calculator" onClick={onEstimate}
+            <JustButton variant="primary" size="lg" icon="arrow-right" onClick={() => { window.jawTrack && window.jawTrack('cta_click', { cta: 'hero_build' }); onBuild(); }}>{t('hero.build')}</JustButton>
+            <JustButton variant="ghost" size="lg" icon="calculator" onClick={() => { window.jawTrack && window.jawTrack('cta_click', { cta: 'hero_estimate' }); onEstimate(); }}
               style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.35)' }}>{t('hero.estimate')}</JustButton>
           </div>
           <div style={{ display: 'flex', gap: 26, marginTop: 24, fontFamily: T.body, color: 'rgba(255,255,255,0.7)', fontSize: 14, flexWrap: 'wrap' }}>

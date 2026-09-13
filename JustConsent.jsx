@@ -16,6 +16,7 @@ window.JustConsent = function JustConsent() {
 
   const decide = (val) => {
     try { localStorage.setItem(CONSENT_KEY, val); } catch (e) {}
+    if (window.gtag) window.gtag('consent', 'update', { analytics_storage: val === 'all' ? 'granted' : 'denied' });
     setShow(false);
   };
 

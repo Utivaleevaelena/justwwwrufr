@@ -18,12 +18,12 @@ Just a Website is a productized website service from Pixel Experts. The customer
 - Multilingual service (English, Polish, French).
 
 ## Contact
-- Website: https://justwebsight-psi.vercel.app/
+- Website: https://justwwwrufr.vercel.app/
 - Email: elena@pixelexpertsteam.com
 - Phone: +1 858 212 8350
 - Company: Pixel Experts, 13278 Deron Ave, San Diego, CA 92129, USA
 
 ## Pages
-- Home: https://justwebsight-psi.vercel.app/
-- Case study (portfolio proof, full project breakdown): https://justwebsight-psi.vercel.app/case-study
-- Privacy Policy: https://justwebsight-psi.vercel.app/privacy
+- Home: https://justwwwrufr.vercel.app/
+- Case study (portfolio proof, full project breakdown): https://justwwwrufr.vercel.app/case-study
+- Privacy Policy: https://justwwwrufr.vercel.app/privacy

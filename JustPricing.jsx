@@ -116,16 +116,44 @@ function ConsultField({ label, name, type = 'text', required, textarea, value, o
   return textarea ? <textarea {...common} rows={3} /> : <input {...common} type={type} />;
 }
 
-function ConsultModal({ open, onClose, t }) {
+const SLOT_TIMES = ['10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+function nextSlotDays(lang, n) {
+  const locale = lang === 'ru' ? 'ru-RU' : lang === 'fr' ? 'fr-FR' : 'en-US';
+  const out = []; const d = new Date(); d.setDate(d.getDate() + 1);
+  while (out.length < n) {
+    if (d.getDay() !== 0 && d.getDay() !== 6) {
+      out.push({ key: d.toISOString().slice(0, 10), label: d.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' }) });
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  return out;
+}
+function SlotSelect({ label, value, onChange, options, placeholder }) {
+  const [f, setF] = React.useState(false);
+  return (
+    <select value={value} onChange={onChange} required onFocus={() => setF(true)} onBlur={() => setF(false)}
+      style={{ width: '100%', fontFamily: T.body, fontSize: 15, color: value ? T.ink : T.muted, background: '#fff',
+        border: '1px solid ' + (f ? T.blue : T.line), borderRadius: 12, padding: '0 15px', height: 52, outline: 'none',
+        boxSizing: 'border-box', boxShadow: f ? '0 0 0 3px ' + T.blueSoft : 'none', transition: 'border-color .15s, box-shadow .15s', appearance: 'none' }}>
+      <option value="" disabled>{placeholder}</option>
+      {options.map((o) => <option key={o.key || o} value={o.key || o}>{o.label || o}</option>)}
+    </select>
+  );
+}
+
+function ConsultModal({ open, onClose, t, lang }) {
   const [data, setData] = React.useState({ name: '', email: '', phone: '', business: '', message: '' });
+  const [date, setDate] = React.useState(''), [time, setTime] = React.useState('');
   const [sent, setSent] = React.useState(false);
   const set = (e) => setData((d) => ({ ...d, [e.target.name]: e.target.value }));
+  const days = React.useMemo(() => nextSlotDays(lang, 10), [lang]);
   React.useEffect(() => { if (open) { setSent(false); document.body.style.overflow = 'hidden'; } else { document.body.style.overflow = ''; } return () => { document.body.style.overflow = ''; }; }, [open]);
   React.useEffect(() => { const k = (e) => e.key === 'Escape' && onClose(); window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k); }, [onClose]);
   if (!open) return null;
+  const dayLabel = days.find((d) => d.key === date)?.label || '';
   const submit = (e) => {
     e.preventDefault();
-    const payload = { ...data, _subject: 'New consultation request — Just a Website Pricing', source: 'Just a Website Pricing Section' };
+    const payload = { ...data, date: dayLabel, dateISO: date, time, _subject: 'New consultation request — Just a Website Pricing', source: 'Just a Website Pricing Section' };
     const P_ENDPOINT = window.JAW_SHEET_ENDPOINT || '';
     if (P_ENDPOINT && !P_ENDPOINT.startsWith('PASTE_')) { try { fetch(P_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }); } catch (err) {} }
     setSent(true);
@@ -146,6 +174,11 @@ function ConsultModal({ open, onClose, t }) {
             <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
               <input type="hidden" name="source" value="Just a Website Pricing Section" />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13 }}>
+                <SlotSelect value={date} onChange={(e) => setDate(e.target.value)} options={days} placeholder={t('modal.dateLabel')} />
+                <SlotSelect value={time} onChange={(e) => setTime(e.target.value)} options={SLOT_TIMES} placeholder={t('modal.timeLabel')} />
+              </div>
+              <p style={{ fontFamily: T.body, fontSize: 12, color: T.muted, margin: '-6px 0 0' }}>{t('modal.tzNote')}</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13 }}>
                 <ConsultField label={t('modal.name')} name="name" required value={data.name} onChange={set} />
                 <ConsultField label={t('modal.email')} name="email" type="email" required value={data.email} onChange={set} />
               </div>
@@ -164,6 +197,7 @@ function ConsultModal({ open, onClose, t }) {
             </div>
             <h3 style={{ fontFamily: T.display, fontSize: 34, color: T.ink, margin: '22px 0 0' }}>{t('modal.okTitle')}</h3>
             <p style={{ fontFamily: T.body, fontSize: 15.5, color: T.muted, margin: '10px 0 0', maxWidth: 360 }}>{t('modal.okHi')}{data.name ? ', ' + data.name.split(' ')[0] : ''} {t('modal.ok')}</p>
+            {dayLabel && time && <p style={{ fontFamily: T.body, fontSize: 14, fontWeight: 700, color: T.ink, margin: '14px 0 0' }}>{dayLabel}, {time}</p>}
           </div>
         )}
       </div>
@@ -172,7 +206,7 @@ function ConsultModal({ open, onClose, t }) {
 }
 
 /* ---------- section ---------- */
-function JustPricing({ onBuild, panelRef }) {
+function JustPricing({ onBuild, panelRef, onSelectPlan }) {
   const [lang, t] = window.jawUseLang();
   const mob = window.jawUseMobile(900);
   const [modal, setModal] = React.useState(false);
@@ -207,7 +241,7 @@ function JustPricing({ onBuild, panelRef }) {
             <div className="jaw-carousel" style={{ display: 'flex', gap: 16, overflowX: 'auto', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', margin: '44px -16px 0', padding: '24px 16px 14px' }}>
               {plans.map((p, i) => (
                 <div key={i} style={{ flex: '0 0 84%', scrollSnapAlign: 'center' }}>
-                  <PlanCard plan={p} meta={PLAN_META[i]} onCta={onBuild} t={t} />
+                  <PlanCard plan={p} meta={PLAN_META[i]} onCta={() => { window.jawTrack && window.jawTrack('cta_click', { cta: 'pricing_plan', plan: p.title }); onSelectPlan && onSelectPlan(p.title + ' — ' + fmt(PLAN_META[i].price)); onBuild(); }} t={t} />
                 </div>
               ))}
               <div style={{ flex: '0 0 4px' }} />
@@ -221,7 +255,7 @@ function JustPricing({ onBuild, panelRef }) {
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px,1fr))', gap: 22, marginTop: 56, alignItems: 'stretch' }}>
             {plans.map((p, i) => (
-              <Reveal key={i} delay={i * 100}><PlanCard plan={p} meta={PLAN_META[i]} onCta={onBuild} t={t} /></Reveal>
+              <Reveal key={i} delay={i * 100}><PlanCard plan={p} meta={PLAN_META[i]} onCta={() => { window.jawTrack && window.jawTrack('cta_click', { cta: 'pricing_plan', plan: p.title }); onSelectPlan && onSelectPlan(p.title + ' — ' + fmt(PLAN_META[i].price)); onBuild(); }} t={t} /></Reveal>
             ))}
           </div>
         )}
@@ -234,7 +268,7 @@ function JustPricing({ onBuild, panelRef }) {
           </div>
         </Reveal>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px,1fr))', gap: 16, marginTop: 42 }}>
-          {extras.map(([e, label], i) => <ExtraCard key={i} e={e} label={label} from={t('pricing.extrasFrom')} delay={i * 200} />)}
+          {extras.map(([e, label, from], i) => <ExtraCard key={i} e={e} label={label} from={from} delay={i * 200} />)}
         </div>
 
         {/* website care */}
@@ -251,7 +285,7 @@ function JustPricing({ onBuild, panelRef }) {
                   <span style={{ fontFamily: T.body, fontSize: 15, color: 'rgba(255,255,255,0.7)' }}>{t('pricing.perMonth')}</span>
                 </div>
                 <div style={{ marginTop: 24 }}>
-                  <JustButton variant="primary" size="lg" icon="arrow-right" onClick={onBuild} style={{ justifyContent: 'center' }}>{t('pricing.careCta')}</JustButton>
+                  <JustButton variant="primary" size="lg" icon="arrow-right" onClick={() => { onSelectPlan && onSelectPlan(t('pricing.careEyebrow') + ' — ' + fmt(CARE_PRICE) + t('pricing.perMonth')); onBuild(); }} style={{ justifyContent: 'center' }}>{t('pricing.careCta')}</JustButton>
                 </div>
                 <p style={{ fontFamily: T.body, fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16 }}>{t('pricing.careNote')}</p>
                 <p style={{ fontFamily: T.body, fontSize: 12.5, color: 'rgba(255,255,255,0.5)', marginTop: 10, lineHeight: 1.5, maxWidth: 440 }}>{t('pricing.careLimits')}</p>
@@ -303,14 +337,14 @@ function JustPricing({ onBuild, panelRef }) {
               <span style={{ color: '#F5A623', fontSize: 18, letterSpacing: 2 }}>★★★★★</span>
               <span style={{ fontFamily: T.body, fontSize: 14.5, color: T.muted }}>{t('pricing.finalStars')}</span>
             </div>
-            <JustButton variant="dark" size="lg" icon="calendar" onClick={() => setModal(true)} style={{ fontSize: 18, padding: '18px 34px' }}>{t('pricing.finalCta')}</JustButton>
+            <JustButton variant="dark" size="lg" icon="calendar" onClick={() => { window.jawTrack && window.jawTrack('cta_click', { cta: 'pricing_final' }); setModal(true); }} style={{ fontSize: 18, padding: '18px 34px' }}>{t('pricing.finalCta')}</JustButton>
           </div>
         </Reveal>
       </div>
 
-      <ConsultModal open={modal} onClose={() => setModal(false)} t={t} />
+      <ConsultModal open={modal} onClose={() => setModal(false)} t={t} lang={lang} />
     </section>
   );
 }
 
-Object.assign(window, { JustPricing });
+Object.assign(window, { JustPricing, ConsultModal });

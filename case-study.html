@@ -1,6 +1,24 @@
 <!-- @dsCard group="Just a Website" viewport="1280x900" name="Just a Website — Case Study" subtitle="Portfolio case study: Dr Mahdi Siala site breakdown" -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://justwebsight-psi.vercel.app/case-study">
+<script>
+(function(){
+  var GA_ID = 'G-C4Z8NGVTEC'; // ⬅️ замени на свой GA4 Measurement ID
+  var c; try { c = localStorage.getItem('jaw_consent'); } catch(e) {}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', { analytics_storage: c === 'all' ? 'granted' : 'denied', ad_storage: 'denied' });
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+  window.jawTrack = function(name, params){ try { gtag('event', name, params || {}); } catch(e) {} };
+  if (GA_ID && GA_ID.indexOf('XXXX') === -1) {
+    var s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+})();
+</script>
+<link rel="canonical" href="https://justwwwrufr.vercel.app/case-study">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>Case study — a website that earns trust before the booking button | Just a Website</title>
 <meta name="description" content="How we designed and built the website of a hand-and-shoulder surgeon in Nice, block by block: what we decided, why, and how it converts a patient into a booking.">
@@ -29,7 +47,7 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <script type="text/babel" src="JustTheme.jsx"></script>
 <script type="text/babel" src="JustI18n.jsx"></script>
 <script type="text/babel" src="JustContact.jsx"></script>

@@ -33,6 +33,7 @@ function JustLeadPopup() {
       setOpen(true);
       try { localStorage.setItem(LEAD_KEY, '1'); } catch (e) {}
       window.removeEventListener('scroll', onScroll);
+      window.jawTrack && window.jawTrack('lead_popup_shown');
     };
     const onScroll = () => {
       const h = document.documentElement.scrollHeight - window.innerHeight;
@@ -53,6 +54,7 @@ function JustLeadPopup() {
     const payload = { ...data, _subject: 'New lead — Free mini-consultation (Just a Website)', source: 'Just a Website — Free Mini Consultation' };
     const LEAD_ENDPOINT = window.JAW_SHEET_ENDPOINT || '';
     if (LEAD_ENDPOINT && !LEAD_ENDPOINT.startsWith('PASTE_')) { try { fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }); } catch (err) {} }
+    window.jawTrack && window.jawTrack('generate_lead', { form_type: 'popup' });
     setSent(true);
     setTimeout(() => setOpen(false), 2600);
   };

@@ -1,5 +1,23 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){
+  var GA_ID = 'G-C4Z8NGVTEC'; // ⬅️ замени на свой GA4 Measurement ID
+  var c; try { c = localStorage.getItem('jaw_consent'); } catch(e) {}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', { analytics_storage: c === 'all' ? 'granted' : 'denied', ad_storage: 'denied' });
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+  window.jawTrack = function(name, params){ try { gtag('event', name, params || {}); } catch(e) {} };
+  if (GA_ID && GA_ID.indexOf('XXXX') === -1) {
+    var s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+})();
+</script>
 <title>Политика конфиденциальности — Just a Website by Pixel</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700;800&display=swap">
 <style>
@@ -52,7 +70,7 @@
   <main class="wrap">
     <h2>1. Оператор данных</h2>
     <div class="card">
-      <p><b>Pixel Experts AI</b><br>
+      <p><b>Pixel Experts Team</b><br>
       13278 Deron Ave, San Diego, CA 92129, USA<br>
       Налоговый номер: 93-4478531<br>
       E-mail: <a href="mailto:elena@pixelexpertsteam.com">elena@pixelexpertsteam.com</a><br>
@@ -97,7 +115,7 @@
   <main class="wrap">
     <h2>1. Responsable du traitement</h2>
     <div class="card">
-      <p><b>Pixel Experts AI</b><br>
+      <p><b>Pixel Experts Team</b><br>
       13278 Deron Ave, San Diego, CA 92129, USA<br>
       N° d'identification : 93-4478531<br>
       E-mail : <a href="mailto:elena@pixelexpertsteam.com">elena@pixelexpertsteam.com</a><br>

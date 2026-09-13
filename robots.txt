@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://justwebsight-psi.vercel.app/sitemap.xml
+Sitemap: https://justwwwrufr.vercel.app/sitemap.xml

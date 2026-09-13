@@ -18,16 +18,18 @@ function Field({ label, name, type = 'text', required, textarea, value, onChange
     : <input {...common} type={type} style={styled} onFocus={() => setF(true)} onBlur={() => setF(false)} />;
 }
 
-function JustContact({ formRef }) {
+function JustContact({ formRef, plan }) {
   const [, t] = window.jawUseLang();
+  React.useEffect(() => { window.lucide && window.lucide.createIcons(); });
   const mob = window.jawUseMobile(560);
-  const [data, setData] = React.useState({ name: '', email: '', phone: '', business: '', message: '' });
+  const [data, setData] = React.useState({ name: '', email: '', phone: '', business: '', message: '', promo: '' });
   const [sent, setSent] = React.useState(false);
   const set = (e) => setData((d) => ({ ...d, [e.target.name]: e.target.value }));
   const submit = (e) => {
     e.preventDefault();
-    const payload = { ...data, _subject: 'New enquiry — Just a Website Landing Page', source: 'Just a Website Landing Page' };
+    const payload = { ...data, plan: plan || '', _subject: 'New enquiry — Just a Website Landing Page', source: 'Just a Website Landing Page' };
     if (SHEET_ENDPOINT && !SHEET_ENDPOINT.startsWith('PASTE_')) { try { fetch(SHEET_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) }); } catch (err) {} }
+    window.jawTrack && window.jawTrack('generate_lead', { form_type: 'contact_form', plan: plan || '' });
     setSent(true);
   };
   return (
@@ -37,9 +39,16 @@ function JustContact({ formRef }) {
         <p style={{ fontFamily: T.body, fontSize: 21, color: T.ink2, margin: '20px 0 0' }}>{t('contact.sub')}</p>
 
         <div style={{ position: 'relative', marginTop: 44, background: '#fff', border: '1px solid ' + T.line, borderRadius: 22, padding: 32, boxShadow: '0 24px 60px rgba(16,24,40,0.08)', textAlign: 'left', minHeight: 340 }}>
+          {plan && !sent && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: T.blueSoft, border: '1px solid ' + T.blueBorder, borderRadius: 12, padding: '12px 16px', marginBottom: 18 }}>
+              <i data-lucide="check-circle-2" style={{ width: 18, height: 18, color: T.blue, flexShrink: 0 }}></i>
+              <span style={{ fontFamily: T.body, fontSize: 14.5, color: T.ink }}>{t('contact.planPrefix')} <strong>{plan}</strong></span>
+            </div>
+          )}
           {!sent ? (
             <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <input type="hidden" name="source" value="Just a Website Landing Page" />
+              <input type="hidden" name="plan" value={plan || ''} />
               <div style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '1fr 1fr', gap: 14 }}>
                 <Field label={t('contact.name')} name="name" required value={data.name} onChange={set} />
                 <Field label={t('contact.email')} name="email" type="email" required value={data.email} onChange={set} />
@@ -48,6 +57,7 @@ function JustContact({ formRef }) {
                 <Field label={t('contact.phone')} name="phone" type="tel" value={data.phone} onChange={set} />
                 <Field label={t('contact.business')} name="business" value={data.business} onChange={set} />
               </div>
+              <Field label={t('contact.promo')} name="promo" value={data.promo} onChange={set} />
               <Field label={t('contact.message')} name="message" textarea value={data.message} onChange={set} />
               <JustButton variant="primary" size="lg" icon="arrow-right" style={{ justifyContent: 'center', marginTop: 4 }}>{t('contact.cta')}</JustButton>
               <p style={{ fontFamily: T.body, fontSize: 12.5, color: T.muted, textAlign: 'center', margin: '2px 0 0' }}>{t('contact.note')}</p>
